@@ -192,9 +192,3 @@ Falls sich das Portal ändert, muss der Selenium Teil angepasst werden.
 Dieses Projekt ist ein **privates Studentenprojekt** und steht in keiner Verbindung zur HTW Saar.
 
 Verwendung auf eigene Verantwortung.
-
----
-
-# Lizenz
-
-MIT License
