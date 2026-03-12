@@ -45,7 +45,7 @@ noten_scraper/
 Repository klonen:
 
 ```bash
-git clone https://github.com/USERNAME/noten_scraper.git
+git clone https://github.com/lucabritten/HTW_SIM_Grade_tracker.git
 cd noten_scraper
 ```
 
