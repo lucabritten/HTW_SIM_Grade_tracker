@@ -24,6 +24,7 @@ Das Script ist dafür gedacht, regelmäßig (z.B. per Cronjob) ausgeführt zu we
 noten_scraper/
 │
 ├── script.py
+├── setup.sh
 ├── README.md
 ├── requirements.txt
 ├── .env.example
@@ -49,27 +50,22 @@ git clone https://github.com/lucabritten/HTW_SIM_Grade_tracker.git
 cd noten_scraper
 ```
 
-Virtuelle Python‑Umgebung erstellen:
+Setup‑Script ausführen:
 
 ```bash
-python3 -m venv venv
+chmod +x setup.sh
+./setup.sh
 ```
 
-Virtuelle Umgebung aktivieren:
+Das Setup‑Script übernimmt automatisch:
 
-```bash
-source venv/bin/activate
-```
+- Erstellung der virtuellen Python‑Umgebung
+- Installation aller Abhängigkeiten
+- Erstellung des `tmp` Ordners
+- Erstellung der `.env` Datei aus `.env.example`
+- optionales Einrichten eines Cronjobs (alle 3 Stunden)
 
-Python Abhängigkeiten installieren:
-
-```bash
-pip install -r requirements.txt
-```
-
-Hinweis: Wenn die Umgebung aktiv ist, beginnt dein Terminalprompt mit `(venv)`.
-
----
+Danach muss nur noch die `.env` Datei mit den eigenen Zugangsdaten ausgefüllt werden.
 
 # Environment Variablen
 
@@ -126,19 +122,21 @@ Beim Start sendet das Script eine **"Started" Nachricht** an Telegram.
 
 # Automatische Ausführung (Cronjob)
 
-Beispiel: **alle 3 Stunden**
+Während des Setups kann optional automatisch ein Cronjob eingerichtet werden.
+
+Dieser führt das Script standardmäßig **alle 3 Stunden** aus.
+
+Falls kein Cronjob eingerichtet wurde, kann er manuell hinzugefügt werden:
 
 ```bash
 crontab -e
 ```
 
-Eintrag hinzufügen:
+Beispiel:
 
 ```
-0 */3 * * * /Users/USERNAME/noten_scraper/venv/bin/python /Users/USERNAME/noten_scraper/script.py
+0 */3 * * * cd /Users/USERNAME/noten_scraper && ./venv/bin/python script.py
 ```
-
-Wichtig: Der Cronjob muss das Python aus der virtuellen Umgebung (`venv`) verwenden, sonst findet Python die installierten Pakete nicht.
 
 ---
 
