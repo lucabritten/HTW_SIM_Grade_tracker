@@ -197,7 +197,6 @@ def main():
         json.dump(new_grades, f, indent=4, sort_keys=True)
 
 if __name__ == "__main__":
-    send_telegram_msg("Started checking grades...", telegram_token, telegram_chat_id)
     try:
         with open(os.path.join(TMP_DIR, "grades.json")) as f:
             old_grades = json.load(f)
